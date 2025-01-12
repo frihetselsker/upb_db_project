@@ -1,23 +1,25 @@
 package com.langlearning.crud.controller;
 
-
-import com.langlearning.crud.service.UserService;
+import com.langlearning.crud.entity.ai.AITutor;
+import com.langlearning.crud.service.AITutorService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/users")
-public class UserController {
+@RequestMapping("/api/ai-tutor")
+public class AITutorController {
     @Autowired
-    private UserService userService;
+    private AITutorService aITutorService;
+
 
     @GetMapping("/all")
-    public Object getAllUsers() {
-        return userService.getAllUsers();
+    public List<AITutor> getAllAITutors() {
+        return aITutorService.getAllAITutors();
     }
 }

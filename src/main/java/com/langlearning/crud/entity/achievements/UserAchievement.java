@@ -10,7 +10,7 @@ import java.util.Date;
 @Document(collection = "UserAchievements")
 public class UserAchievement {
     @Id
-    private int id;
+    private String id;
     private int userAchievementId;
     private int userId;
     private int achievementId;

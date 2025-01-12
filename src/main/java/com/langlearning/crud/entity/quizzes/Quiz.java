@@ -10,11 +10,11 @@ import java.util.ArrayList;
 @Document(collection = "Quizzes")
 public class Quiz {
     @Id
-    private int id;
+    private String id;
     private int quizId;
     private String title;
-    private String languageCode;
     private String difficultyLevel;
+    private String languageCode;
     private int totalQuestions;
     private ArrayList<QuizQuestion> questions;
 }

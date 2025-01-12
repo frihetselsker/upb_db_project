@@ -10,7 +10,7 @@ import java.util.ArrayList;
 @Document(collection = "Courses")
 public class Course {
     @Id
-    private int id;
+    private String id;
     private int courseId;
     private String title;
     private String description;

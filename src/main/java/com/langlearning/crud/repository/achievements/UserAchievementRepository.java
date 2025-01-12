@@ -1,9 +1,10 @@
 package com.langlearning.crud.repository.achievements;
 
-import com.langlearning.crud.entity.achievements.Achievement;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
+import com.langlearning.crud.entity.achievements.UserAchievement;
 
 @Repository
-public interface AchievementRepository extends MongoRepository<Achievement, String> {
+public interface UserAchievementRepository extends MongoRepository<UserAchievement, String> {
+
 }

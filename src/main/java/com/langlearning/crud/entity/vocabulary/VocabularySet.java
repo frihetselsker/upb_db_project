@@ -10,7 +10,7 @@ import java.util.LinkedList;
 @Document(collection = "VocabularySets")
 public class VocabularySet {
     @Id
-    private int id;
+    private String id;
     private int vocabularySetId;
     private String title;
     private String languageCode;

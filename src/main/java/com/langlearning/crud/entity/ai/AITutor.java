@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "AITutors")
 public class AITutor {
     @Id
-    private int id;
+    private String id;
     private int tutorId;
     private String tutorName;
     private String specializationLanguage;

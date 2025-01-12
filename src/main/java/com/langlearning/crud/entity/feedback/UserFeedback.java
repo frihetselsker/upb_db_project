@@ -7,10 +7,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.Date;
 
 @Data
-@Document(collection = "UserFeedback")
+@Document(collection = "UserFeedbacks")
 public class UserFeedback {
     @Id
-    private int id;
+    private String id;
     private int feedbackId;
     private int userId;
     private String feedbackType;

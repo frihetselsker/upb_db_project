@@ -11,7 +11,7 @@ import java.util.Date;
 @Document(collection = "AIConversations")
 public class AIConversation {
     @Id
-    private int id;
+    private String id;
     private int conversationId;
     private int userId;
     private int tutorId;

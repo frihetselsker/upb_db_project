@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "Achievements")
 public class Achievement {
     @Id
-    private int id;
+    private String id;
     private int achievementId;
     private String title;
     private String description;
