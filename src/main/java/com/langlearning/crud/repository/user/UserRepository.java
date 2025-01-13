@@ -17,4 +17,5 @@ public interface UserRepository extends MongoRepository<User, String> {
     List<User> findByUserProfileLastName(String lastName);
     List<User> findByUserProfileBirthDate(String birthDate);
     List<User> findByUserProfileNativeLanguage(String nativeLanguage);
+
 }
