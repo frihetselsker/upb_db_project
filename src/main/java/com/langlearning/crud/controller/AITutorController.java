@@ -4,9 +4,8 @@ import com.langlearning.crud.entity.ai.AITutor;
 import com.langlearning.crud.service.AITutorService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,7 +17,23 @@ public class AITutorController {
 
 
     @GetMapping("/all")
-    public List<AITutor> getAllAITutors() {
+    public ResponseEntity<List<AITutor>> getAllAITutors() {
         return aITutorService.getAllAITutors();
+    }
+
+    @PostMapping("/create")
+    public ResponseEntity<AITutor> createEntity(@RequestBody AITutor entity) {
+        return aITutorService.createEntity(entity);
+    }
+
+    @PostMapping("/update")
+    public ResponseEntity<AITutor> updateEntity(@RequestBody AITutor entity) {
+        return aITutorService.updateEntity(entity);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Void> deleteEntity(@PathVariable int id) {
+        return aITutorService.deleteEntity(id);
+
     }
 }

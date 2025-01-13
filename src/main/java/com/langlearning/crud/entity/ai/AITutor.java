@@ -17,13 +17,6 @@ public class AITutor {
     private String aiModelVersion;
     private boolean isActive;
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public int getTutorId() {
         return tutorId;

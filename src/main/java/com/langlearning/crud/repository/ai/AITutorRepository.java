@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface AITutorRepository extends MongoRepository<AITutor, String> {
+    AITutor findByTutorId(int tutorId);
+    void deleteByTutorId(int tutorId);
 }
