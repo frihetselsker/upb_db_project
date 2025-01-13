@@ -69,17 +69,29 @@ public class UserService {
         if (userOptional.isPresent()) {
             User existingUser = userOptional.get();
             UserProfile existingUserProfile = existingUser.getUserProfile();
-            if(existingUserProfile != null) {
-                BeanUtils.copyProperties(userProfile, existingUserProfile, getNullPropertyNames(userProfile));
-            } else {
-                existingUserProfile = userProfile;
+
+            if (existingUserProfile == null) {
+                existingUserProfile = new UserProfile();
+                existingUser.setUserProfile(existingUserProfile);
             }
-            if (existingUserProfile.getProfileId() == 0) { // Complete checking with the actual object from DB
+            int existingProfileId = existingUserProfile.getProfileId();
+            BeanUtils.copyProperties(userProfile, existingUserProfile, getNullPropertyNames(userProfile));
+            if (existingProfileId != 0) {
+                existingUserProfile.setProfileId(existingProfileId);
+            } else {
                 existingUserProfile.setProfileId(sequenceGeneratorService.generateSequence("user_profile_sequence"));
             }
-            if(userProfile.getLanguageProficiency() != null) {
-                existingUser.getUserProfile().setLanguageProficiency(existingUserProfile.getLanguageProficiency());
+            if (userProfile.getLanguageProficiency() != null) {
+                if (existingUserProfile.getLanguageProficiency() == null) {
+                    existingUserProfile.setLanguageProficiency(new LanguageProficiency());
+                }
+                BeanUtils.copyProperties(
+                        userProfile.getLanguageProficiency(),
+                        existingUserProfile.getLanguageProficiency(),
+                        getNullPropertyNames(userProfile.getLanguageProficiency())
+                );
             }
+
             existingUser.setUserProfile(existingUserProfile);
             userRepository.save(existingUser);
             return ResponseEntity.ok(existingUser);
@@ -88,22 +100,29 @@ public class UserService {
         }
     }
 
+
     public ResponseEntity<User> updateLanguageProficiency(int userId, LanguageProficiency languageProficiency) {
         Optional<User> userOptional = Optional.ofNullable(userRepository.findByUserId(userId));
         if (userOptional.isPresent()) {
             User existingUser = userOptional.get();
             UserProfile existingUserProfile = existingUser.getUserProfile();
-            LanguageProficiency existingLanguageProficiency = existingUserProfile.getLanguageProficiency();
-            if (existingLanguageProficiency != null) {
-                BeanUtils.copyProperties(languageProficiency, existingLanguageProficiency, getNullPropertyNames(languageProficiency));
-            } else {
-                existingLanguageProficiency = languageProficiency;
+            if (existingUserProfile == null) {
+                existingUserProfile = new UserProfile();
+                existingUser.setUserProfile(existingUserProfile);
             }
-            if (existingLanguageProficiency.getProficiencyId() == 0) { // Complete checking with the actual object from DB
+            LanguageProficiency existingLanguageProficiency = existingUserProfile.getLanguageProficiency();
+            if (existingLanguageProficiency == null) {
+                existingLanguageProficiency = new LanguageProficiency();
+                existingUserProfile.setLanguageProficiency(existingLanguageProficiency);
+            }
+            int existingProficiencyId = existingLanguageProficiency.getProficiencyId();
+            BeanUtils.copyProperties(languageProficiency, existingLanguageProficiency, getNullPropertyNames(languageProficiency));
+            if (existingProficiencyId != 0) {
+                existingLanguageProficiency.setProficiencyId(existingProficiencyId);
+            } else {
                 existingLanguageProficiency.setProficiencyId(sequenceGeneratorService.generateSequence("language_proficiency_sequence"));
             }
-            existingUserProfile.setLanguageProficiency(existingLanguageProficiency);
-            existingUser.setUserProfile(existingUserProfile);
+
             userRepository.save(existingUser);
             return ResponseEntity.ok(existingUser);
         } else {
