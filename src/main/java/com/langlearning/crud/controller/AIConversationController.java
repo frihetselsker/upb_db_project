@@ -4,9 +4,8 @@ import com.langlearning.crud.entity.ai.AIConversation;
 import com.langlearning.crud.service.AIConversationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,7 +17,22 @@ public class AIConversationController {
     private AIConversationService aiConversationService;
 
     @GetMapping("/all")
-    public List<AIConversation> getAllAIConversations() {
+    public ResponseEntity<List<AIConversation>> getAllAIConversations() {
         return aiConversationService.getAllAIConversations();
+    }
+
+    @GetMapping("/create")
+    public ResponseEntity<AIConversation> createEntity(@RequestBody AIConversation entity) {
+        return aiConversationService.createEntity(entity);
+    }
+
+    @GetMapping("/update")
+    public ResponseEntity<AIConversation> updateEntity(@RequestBody AIConversation entity) {
+        return aiConversationService.updateEntity(entity);
+    }
+
+    @GetMapping("/delete/{id}")
+    public ResponseEntity<Void> deleteEntity(@PathVariable int id) {
+        return aiConversationService.deleteEntity(id);
     }
 }

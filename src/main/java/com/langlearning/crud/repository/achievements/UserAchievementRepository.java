@@ -6,5 +6,6 @@ import com.langlearning.crud.entity.achievements.UserAchievement;
 
 @Repository
 public interface UserAchievementRepository extends MongoRepository<UserAchievement, String> {
-
+    UserAchievement findByUserAchievementId(int userAchievementId);
+    void deleteByUserAchievementId(int userAchievementId);
 }

@@ -1,7 +1,6 @@
 package com.langlearning.crud.service;
 
 import com.langlearning.crud.entity.achievements.Achievement;
-import com.langlearning.crud.entity.ai.AITutor;
 import com.langlearning.crud.repository.achievements.AchievementRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeanUtils;
@@ -29,18 +28,28 @@ public class AchievementService {
         return ResponseEntity.ok(achievementRepository.findAll());
     }
 
-    public ResponseEntity<Achievement> createEntity(Achievement entity) {
+    public ResponseEntity<Achievement> getAchievementById(int AchievementId) {
+        Optional<Achievement> achievement = Optional.ofNullable(achievementRepository.findByAchievementId(AchievementId));
+        return achievement.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    public ResponseEntity<Achievement> createAchievement(Achievement entity) {
         entity.setAchievementId(sequenceGeneratorService.generateSequence("achievement_sequence"));
         achievementRepository.save(entity);
         return ResponseEntity.ok(entity);
     }
 
-    public ResponseEntity<Void> deleteEntity(int achievementId) {
-        achievementRepository.deleteByAchievementId(achievementId);
-        return ResponseEntity.noContent().build();
+    public ResponseEntity<Void> deleteAchievement(int AchievementId) {
+        Optional<Achievement> achievement = Optional.ofNullable(achievementRepository.findByAchievementId(AchievementId));
+        if (achievement.isPresent()) {
+            achievementRepository.deleteByAchievementId(AchievementId);
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
-    public ResponseEntity<Achievement> updateEntity(Achievement entity) {
+    public ResponseEntity<Achievement> updateAchievement(Achievement entity) {
         Optional<Achievement> achievementOptional = Optional.ofNullable(achievementRepository.findByAchievementId(entity.getAchievementId()));
         if (achievementOptional.isPresent()) {
             Achievement existingAchievement = achievementOptional.get();

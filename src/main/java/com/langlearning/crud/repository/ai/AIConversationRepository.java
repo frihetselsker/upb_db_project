@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface AIConversationRepository extends MongoRepository<AIConversation, String> {
+    AIConversation findByConversationId(int conversationId);
+    void deleteByConversationId(int conversationId);
 }
