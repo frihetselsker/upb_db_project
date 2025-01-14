@@ -15,7 +15,6 @@ public class AITutorController {
     @Autowired
     private AITutorService aITutorService;
 
-
     @GetMapping("/all")
     public ResponseEntity<List<AITutor>> getAllAITutors() {
         return aITutorService.getAllAITutors();
