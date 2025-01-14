@@ -1,19 +1,43 @@
 package com.langlearning.crud.controller;
 
+import com.langlearning.crud.entity.quizzes.Quiz;
 import com.langlearning.crud.service.QuizService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
-@RequestMapping("/api/quizzes")
+@RequestMapping("/api/quiz")
+@RequiredArgsConstructor
 public class QuizController {
     @Autowired
-    private QuizService quizService;
+    private final QuizService quizService;
 
     @GetMapping("/all")
-    public Object getAllQuizzes() {
+    public ResponseEntity<List<Quiz>> getAllQuizzes() {
         return quizService.getAllQuizzes();
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Quiz> getQuizById(@PathVariable String id) {
+        return quizService.getQuizById(id);
+    }
+
+    @PostMapping("/create")
+    public ResponseEntity<Quiz> createQuiz(@RequestBody Quiz quiz) {
+        return quizService.createQuiz(quiz);
+    }
+
+    @PutMapping("/update")
+    public ResponseEntity<Quiz> updateQuiz(@RequestBody Quiz quiz) {
+        return quizService.updateQuiz(quiz);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Void> deleteQuiz(@PathVariable String id) {
+        return quizService.deleteQuiz(id);
     }
 }
