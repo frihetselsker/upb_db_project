@@ -2,7 +2,6 @@ package com.langlearning.crud.controller;
 
 import com.langlearning.crud.entity.ai.AITutor;
 import com.langlearning.crud.service.AITutorService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
