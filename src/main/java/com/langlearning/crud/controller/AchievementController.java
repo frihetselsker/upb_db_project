@@ -2,9 +2,8 @@ package com.langlearning.crud.controller;
 
 import com.langlearning.crud.entity.achievements.Achievement;
 import com.langlearning.crud.service.AchievementService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,7 +17,25 @@ public class AchievementController {
     }
 
     @GetMapping("/all")
-    public List<Achievement> getAllAchievements() {
+    public ResponseEntity<List<Achievement>> getAllAchievements() {
         return achievementService.getAllAchievements();
     }
+
+    @PostMapping("/create")
+    public ResponseEntity<Achievement> createEntity(Achievement entity) {
+        return achievementService.createEntity(entity);
+    }
+
+    @PostMapping("/update")
+    public ResponseEntity<Achievement> updateEntity(Achievement entity) {
+        return achievementService.updateEntity(entity);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Void> deleteEntity(int id) {
+        return achievementService.deleteEntity(id);
+    }
+
+
+
 }

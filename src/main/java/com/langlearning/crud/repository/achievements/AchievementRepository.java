@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface AchievementRepository extends MongoRepository<Achievement, String> {
+    void deleteByAchievementId(int achievementId);
+    Achievement findByAchievementId(int achievementId);
 }
