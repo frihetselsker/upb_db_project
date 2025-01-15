@@ -1,11 +1,17 @@
 package com.langlearning.crud.entity.course;
 
-import lombok.Data;
+
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 @RequiredArgsConstructor
+@Document(collection = "Lessons")
 public class Lesson {
+    @Id
+    private String id;
     private int lessonId;
+    private int moduleId;
     private String title;
     private String lessonType;
     private int estimatedDuration;
@@ -49,5 +55,13 @@ public class Lesson {
 
     public void setLessonContent(LessonContent lessonContent) {
         this.lessonContent = lessonContent;
+    }
+
+    public int getModuleId() {
+        return moduleId;
+    }
+
+    public void setModuleId(int moduleId) {
+        this.moduleId = moduleId;
     }
 }

@@ -21,18 +21,23 @@ public class AchievementController {
         return achievementService.getAllAchievements();
     }
 
+    @GetMapping("{id}")
+    public ResponseEntity<Achievement> getEntityById(@PathVariable int id) {
+        return achievementService.getEntityById(id);
+    }
+
     @PostMapping("/create")
-    public ResponseEntity<Achievement> createEntity(Achievement entity) {
+    public ResponseEntity<Achievement> createEntity(@RequestBody Achievement entity) {
         return achievementService.createEntity(entity);
     }
 
     @PostMapping("/update")
-    public ResponseEntity<Achievement> updateEntity(Achievement entity) {
+    public ResponseEntity<Achievement> updateEntity(@RequestBody Achievement entity) {
         return achievementService.updateEntity(entity);
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Void> deleteEntity(int id) {
+    public ResponseEntity<Void> deleteEntity(@PathVariable int id) {
         return achievementService.deleteEntity(id);
     }
 

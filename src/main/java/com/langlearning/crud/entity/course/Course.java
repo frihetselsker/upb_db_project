@@ -4,7 +4,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.ArrayList;
 
 @RequiredArgsConstructor
 @Document(collection = "Courses")
@@ -18,7 +17,6 @@ public class Course {
     private String difficultyLevel;
     private double price;
     private boolean isPublished;
-    private ArrayList<Module> modules;
 
     public String getId() {
         return id;
@@ -82,13 +80,5 @@ public class Course {
 
     public void setPublished(boolean published) {
         isPublished = published;
-    }
-
-    public ArrayList<Module> getModules() {
-        return modules;
-    }
-
-    public void setModules(ArrayList<Module> modules) {
-        this.modules = modules;
     }
 }

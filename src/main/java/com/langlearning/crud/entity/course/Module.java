@@ -2,16 +2,21 @@ package com.langlearning.crud.entity.course;
 
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 
 @RequiredArgsConstructor
+@Document(collection = "Modules")
 public class Module {
+    @Id
+    private String id;
     private int moduleId;
+    private int courseId;
     private String title;
     private String description;
     private int orderSequence;
-    private List<Lesson> lessons;
 
     public int getModuleId() {
         return moduleId;
@@ -45,11 +50,20 @@ public class Module {
         this.orderSequence = orderSequence;
     }
 
-    public List<Lesson> getLessons() {
-        return lessons;
+
+    public int getCourseId() {
+        return courseId;
     }
 
-    public void setLessons(List<Lesson> lessons) {
-        this.lessons = lessons;
+    public void setCourseId(int courseId) {
+        this.courseId = courseId;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

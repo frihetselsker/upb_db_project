@@ -1,16 +1,19 @@
 package com.langlearning.crud.entity.quizzes;
 
-import lombok.Data;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.ArrayList;
 
 @RequiredArgsConstructor
+@Document(collection = "QuizQuestions")
 public class QuizQuestion {
+    @Id
+    private String id;
     private int questionId;
+    private int quizId;
     private String questionText;
     private String questionType;
-    private ArrayList<QuizOption> options;
 
     public int getQuestionId() {
         return questionId;
@@ -36,11 +39,20 @@ public class QuizQuestion {
         this.questionType = questionType;
     }
 
-    public ArrayList<QuizOption> getOptions() {
-        return options;
+
+    public String getId() {
+        return id;
     }
 
-    public void setOptions(ArrayList<QuizOption> options) {
-        this.options = options;
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public int getQuizId() {
+        return quizId;
+    }
+
+    public void setQuizId(int quizId) {
+        this.quizId = quizId;
     }
 }

@@ -1,6 +1,5 @@
 package com.langlearning.crud.entity.quizzes;
 
-import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -17,7 +16,6 @@ public class Quiz {
     private String difficultyLevel;
     private String languageCode;
     private int totalQuestions;
-    private ArrayList<QuizQuestion> questions;
 
     public String getId() {
         return id;
@@ -65,13 +63,5 @@ public class Quiz {
 
     public void setTotalQuestions(int totalQuestions) {
         this.totalQuestions = totalQuestions;
-    }
-
-    public ArrayList<QuizQuestion> getQuestions() {
-        return questions;
-    }
-
-    public void setQuestions(ArrayList<QuizQuestion> questions) {
-        this.questions = questions;
     }
 }
