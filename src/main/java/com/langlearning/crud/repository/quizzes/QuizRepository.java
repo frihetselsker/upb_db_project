@@ -8,5 +8,6 @@ import java.util.List;
 
 @Repository
 public interface QuizRepository extends MongoRepository<Quiz, String> {
-
+    Quiz findByQuizId(int quizId);
+    void deleteByQuizId(int quizId);
 }

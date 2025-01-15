@@ -23,8 +23,8 @@ public class ModuleService {
     @Autowired
     private ModuleRepository moduleRepository;
 
-    @Autowired
-    private LessonService lessonService;
+    /*@Autowired
+    private LessonService lessonService;*/
 
     @Autowired
     private SequenceGeneratorService sequenceGeneratorService;
@@ -49,7 +49,7 @@ public class ModuleService {
 
     public ResponseEntity<Void> deleteModule(int moduleId){
         moduleRepository.deleteByModuleId(moduleId);
-        lessonService.deleteLessonsByModuleId(moduleId);
+        //lessonService.deleteLessonsByModuleId(moduleId);
         return ResponseEntity.noContent().build();
     }
 

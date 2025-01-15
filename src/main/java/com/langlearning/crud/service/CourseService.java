@@ -18,8 +18,8 @@ import static com.langlearning.crud.utilities.CopyManager.getNullPropertyNames;
 public class CourseService {
     @Autowired
     private CourseRepository courseRepository;
-    @Autowired
-    private ModuleService moduleService;
+    /*@Autowired
+    private ModuleService moduleService;*/
 
     @Autowired
     private SequenceGeneratorService sequenceGeneratorService;
@@ -40,7 +40,7 @@ public class CourseService {
 
     public ResponseEntity<Void> deleteCourse(int courseId){
         courseRepository.deleteByCourseId(courseId);
-        moduleService.deleteModulesByCourseId(courseId);
+        //moduleService.deleteModulesByCourseId(courseId);
         return ResponseEntity.noContent().build();
     }
 

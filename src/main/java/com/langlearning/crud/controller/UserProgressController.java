@@ -3,6 +3,7 @@ package com.langlearning.crud.controller;
 import com.langlearning.crud.entity.assessment.UserProgress;
 import com.langlearning.crud.service.UserProgressService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,32 +14,41 @@ import java.util.Optional;
 @RequestMapping("/api/user-progress")
 @RequiredArgsConstructor
 public class UserProgressController {
-    private final UserProgressService userProgressService;
+    @Autowired
+    private UserProgressService userProgressService;
 
     @GetMapping("/all")
-    public List<UserProgress> getAllUserProgress() {
+    public ResponseEntity<List<UserProgress>> getAllUserProgress() {
         return userProgressService.getAllUserProgress();
     }
 
-    @GetMapping("/{achievementId}/{tutorId}")
-    public ResponseEntity<UserProgress> getUserProgressByIds(@PathVariable String achievementId, @PathVariable String tutorId) {
-        Optional<UserProgress> userProgress = userProgressService.getUserProgressByIds(achievementId, tutorId);
-        return userProgress.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    @GetMapping("/{id}")
+    public ResponseEntity<UserProgress> getUserProgressById(@PathVariable int id) {
+        return userProgressService.getUserProgressById(id);
+    }
+
+    @GetMapping("/user/{userId}")
+    public ResponseEntity<List<UserProgress>> getUserProgressByUserId(@PathVariable int userId) {
+        return userProgressService.getUserProgressByUserId(userId);
+    }
+
+    @GetMapping("/lesson/{lessonId}")
+    public ResponseEntity<List<UserProgress>> getUserProgressByLessonId(@PathVariable int lessonId) {
+        return userProgressService.getUserProgressByLessonId(lessonId);
     }
 
     @PostMapping("/create")
-    public UserProgress createUserProgress(@RequestBody UserProgress userProgress) {
+    public ResponseEntity<UserProgress> createUserProgress(@RequestBody UserProgress userProgress) {
         return userProgressService.createUserProgress(userProgress);
     }
 
     @PutMapping("/update")
-    public UserProgress updateUserProgress(@RequestBody UserProgress userProgress) {
+    public ResponseEntity<UserProgress> updateUserProgress(@RequestBody UserProgress userProgress) {
         return userProgressService.updateUserProgress(userProgress);
     }
 
-    @DeleteMapping("/delete/{achievementId}/{tutorId}")
-    public ResponseEntity<Void> deleteUserProgress(@PathVariable String achievementId, @PathVariable String tutorId) {
-        userProgressService.deleteUserProgress(achievementId, tutorId);
-        return ResponseEntity.noContent().build();
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Void> deleteUserProgress(@PathVariable int id) {
+        return userProgressService.deleteUserProgress(id);
     }
 }

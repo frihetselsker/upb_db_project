@@ -14,7 +14,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class QuizController {
     @Autowired
-    private final QuizService quizService;
+    private QuizService quizService;
 
     @GetMapping("/all")
     public ResponseEntity<List<Quiz>> getAllQuizzes() {
@@ -22,7 +22,7 @@ public class QuizController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Quiz> getQuizById(@PathVariable String id) {
+    public ResponseEntity<Quiz> getQuizById(@PathVariable int id) {
         return quizService.getQuizById(id);
     }
 
@@ -37,7 +37,7 @@ public class QuizController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Void> deleteQuiz(@PathVariable String id) {
+    public ResponseEntity<Void> deleteQuiz(@PathVariable int id) {
         return quizService.deleteQuiz(id);
     }
 }
