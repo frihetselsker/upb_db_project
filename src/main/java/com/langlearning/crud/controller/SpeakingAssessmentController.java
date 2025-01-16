@@ -27,7 +27,7 @@ public class SpeakingAssessmentController {
     }
 
     @GetMapping("/user/{userId}")
-    public ResponseEntity<List<SpeakingAssessment>> getFeedbackByUserId(@PathVariable int userId) {
+    public ResponseEntity<List<SpeakingAssessment>> getAssessmentByUserId(@PathVariable int userId) {
         return speakingAssessmentService.getAllSpeakingAssessmentsByUserId(userId);
     }
 

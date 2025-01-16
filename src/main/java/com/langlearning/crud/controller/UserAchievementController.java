@@ -21,7 +21,7 @@ public class UserAchievementController {
         return userAchievementService.getAllUserAchievements();
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<UserAchievement> getEntityById(@PathVariable int id) {
         return userAchievementService.getUserAchievementById(id);
     }
@@ -39,6 +39,11 @@ public class UserAchievementController {
     @PostMapping("/create")
     public ResponseEntity<UserAchievement> createEntity(@RequestBody UserAchievement entity) {
         return userAchievementService.createEntity(entity);
+    }
+
+    @PostMapping("/update")
+    public ResponseEntity<UserAchievement> updateEntity(@RequestBody UserAchievement entity) {
+        return userAchievementService.updateEntity(entity);
     }
 
     @DeleteMapping("/delete/{id}")
