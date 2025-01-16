@@ -8,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/user-progress")
@@ -42,7 +41,7 @@ public class UserProgressController {
         return userProgressService.createUserProgress(userProgress);
     }
 
-    @PutMapping("/update")
+    @PostMapping("/update")
     public ResponseEntity<UserProgress> updateUserProgress(@RequestBody UserProgress userProgress) {
         return userProgressService.updateUserProgress(userProgress);
     }
