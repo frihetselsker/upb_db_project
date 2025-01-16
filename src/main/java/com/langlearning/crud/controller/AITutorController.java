@@ -19,6 +19,11 @@ public class AITutorController {
         return aITutorService.getAllAITutors();
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<AITutor> getEntityById(@PathVariable int id) {
+        return aITutorService.getAITutorById(id);
+    }
+
     @PostMapping("/create")
     public ResponseEntity<AITutor> createEntity(@RequestBody AITutor entity) {
         return aITutorService.createEntity(entity);

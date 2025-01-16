@@ -30,6 +30,15 @@ public class AITutorService {
         return ResponseEntity.ok(aITutorRepository.findAll());
     }
 
+    public ResponseEntity<AITutor> getAITutorById(int tutorId) {
+        AITutor aITutor = aITutorRepository.findByTutorId(tutorId);
+        if (aITutor != null) {
+            return ResponseEntity.ok(aITutor);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
     public ResponseEntity<AITutor> createEntity(AITutor entity) {
         entity.setTutorId(sequenceGeneratorService.generateSequence("ai_tutor_sequence"));
         aITutorRepository.save(entity);
