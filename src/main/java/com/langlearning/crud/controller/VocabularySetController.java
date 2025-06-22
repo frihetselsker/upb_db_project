@@ -32,17 +32,17 @@ public class VocabularySetController {
         return vocabularySetService.createEntity(entity);
     }
 
-    @PostMapping("/update")
+    @PutMapping("/update")
     public ResponseEntity<VocabularySet> updateEntity(@RequestBody VocabularySet entity) {
         return vocabularySetService.updateEntity(entity);
     }
 
-    @PostMapping("/update-word/{id}")
+    @PutMapping("/update-word/{id}")
     public ResponseEntity<VocabularySet> updateWords(@RequestBody VocabularyWord word, @PathVariable int id) {
         return vocabularySetService.updateWord(id, word);
     }
 
-    @PostMapping("/delete-word/{setId}/{wordId}")
+    @DeleteMapping("/delete-word/{setId}/{wordId}")
     public ResponseEntity<VocabularySet> deleteWord(@PathVariable int setId, @PathVariable int wordId) {
         return vocabularySetService.deleteWord(setId, wordId);
     }

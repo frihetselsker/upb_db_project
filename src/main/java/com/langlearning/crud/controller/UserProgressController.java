@@ -41,7 +41,7 @@ public class UserProgressController {
         return userProgressService.createUserProgress(userProgress);
     }
 
-    @PostMapping("/update")
+    @PutMapping("/update")
     public ResponseEntity<UserProgress> updateUserProgress(@RequestBody UserProgress userProgress) {
         return userProgressService.updateUserProgress(userProgress);
     }

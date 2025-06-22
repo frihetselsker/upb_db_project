@@ -36,7 +36,7 @@ public class ModuleController {
         return moduleService.createModule(module);
     }
 
-    @PostMapping("/update")
+    @PutMapping("/update")
     public ResponseEntity<Module> updateModule(@RequestBody Module module) {
         return moduleService.updateModule(module);
     }

@@ -34,7 +34,7 @@ public class QuizQuestionController {
         return quizQuestionService.createQuizQuestion(quizQuestion);
     }
 
-    @PostMapping("/update")
+    @PutMapping("/update")
     public ResponseEntity<QuizQuestion> updateQuizQuestion(@RequestBody QuizQuestion quizQuestion) {
         return quizQuestionService.updateQuizQuestion(quizQuestion);
     }

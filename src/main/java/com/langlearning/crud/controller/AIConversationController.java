@@ -31,7 +31,7 @@ public class AIConversationController {
         return aiConversationService.createEntity(entity);
     }
 
-    @PostMapping("/update")
+    @PutMapping("/update")
     public ResponseEntity<AIConversation> updateEntity(@RequestBody AIConversation entity) {
         return aiConversationService.updateEntity(entity);
     }

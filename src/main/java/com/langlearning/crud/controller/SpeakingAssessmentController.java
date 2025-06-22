@@ -36,7 +36,7 @@ public class SpeakingAssessmentController {
         return speakingAssessmentService.createEntity(entity);
     }
 
-    @PostMapping("/update")
+    @PutMapping("/update")
     public ResponseEntity<SpeakingAssessment> updateEntity(@RequestBody SpeakingAssessment entity) {
         return speakingAssessmentService.updateEntity(entity);
     }

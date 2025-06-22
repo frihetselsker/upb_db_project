@@ -36,7 +36,7 @@ public class QuizOptionController {
         return quizOptionService.createQuizOption(quizOption);
     }
 
-    @PostMapping("/update")
+    @PutMapping("/update")
     public ResponseEntity<QuizOption> updateQuizOption(@RequestBody QuizOption quizOption) {
         return quizOptionService.updateQuizOption(quizOption);
     }

@@ -41,7 +41,7 @@ public class UserAchievementController {
         return userAchievementService.createEntity(entity);
     }
 
-    @PostMapping("/update")
+    @PutMapping("/update")
     public ResponseEntity<UserAchievement> updateEntity(@RequestBody UserAchievement entity) {
         return userAchievementService.updateEntity(entity);
     }

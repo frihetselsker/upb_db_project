@@ -35,17 +35,17 @@ public class UserController {
         return userService.createUser(user);
     }
 
-    @PostMapping("/update")
+    @PutMapping("/update")
     public ResponseEntity<User> updateEntity(@RequestBody User entity) {
         return userService.updateEntity(entity);
     }
 
-    @PostMapping("/update-profile/{id}")
+    @PutMapping("/update-profile/{id}")
     public ResponseEntity<User> updateProfile(@RequestBody UserProfile entity, @PathVariable int id) {
         return userService.updateProfile(id, entity);
     }
 
-    @PostMapping("/update-lp/{id}")
+    @PutMapping("/update-lp/{id}")
     public ResponseEntity<User> updateLanguageProficiency(@RequestBody LanguageProficiency languageProficiency, @PathVariable int id) {
         return userService.updateLanguageProficiency(id, languageProficiency);
     }

@@ -2,6 +2,7 @@ package com.langlearning.crud.controller;
 
 import com.langlearning.crud.entity.achievements.Achievement;
 import com.langlearning.crud.service.AchievementService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,6 +11,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/achievements")
 public class AchievementController {
+    @Autowired
     private AchievementService achievementService;
 
     public AchievementController(AchievementService achievementService) {
@@ -31,7 +33,7 @@ public class AchievementController {
         return achievementService.createEntity(entity);
     }
 
-    @PostMapping("/update")
+    @PutMapping("/update")
     public ResponseEntity<Achievement> updateEntity(@RequestBody Achievement entity) {
         return achievementService.updateEntity(entity);
     }

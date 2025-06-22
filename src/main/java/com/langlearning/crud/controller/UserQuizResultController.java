@@ -42,7 +42,7 @@ public class UserQuizResultController {
         return userQuizResultService.createUserQuizResult(userQuizResult);
     }
 
-    @PostMapping("/update")
+    @PutMapping("/update")
     public ResponseEntity<UserQuizResult> updateUserQuizResult(@RequestBody UserQuizResult userQuizResult) {
         return userQuizResultService.updateUserQuizResult(userQuizResult);
     }

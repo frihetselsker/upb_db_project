@@ -2,6 +2,7 @@ package com.langlearning.crud.controller;
 
 import com.langlearning.crud.entity.course.Course;
 import com.langlearning.crud.service.CourseService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,6 +11,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/courses")
 public class CourseController {
+    @Autowired
     private CourseService courseService;
 
     public CourseController(CourseService courseService) {
@@ -37,7 +39,7 @@ public class CourseController {
         return courseService.deleteCourse(id);
     }
 
-    @PostMapping("/update")
+    @PutMapping("/update")
     public ResponseEntity<Course> updateEntity(@RequestBody Course entity) {
         return courseService.updateCourse(entity);
     }

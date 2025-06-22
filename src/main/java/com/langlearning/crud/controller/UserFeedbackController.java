@@ -36,7 +36,7 @@ public class UserFeedbackController {
         return userFeedbackService.createEntity(entity);
     }
 
-    @PostMapping("/update")
+    @PutMapping("/update")
     public ResponseEntity<UserFeedback> updateEntity(@RequestBody UserFeedback entity) {
         return userFeedbackService.updateEntity(entity);
     }

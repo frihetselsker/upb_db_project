@@ -32,17 +32,17 @@ public class LessonController {
         return lessonService.getLessonsByModuleId(moduleId);
     }
 
-    @GetMapping("/create")
+    @PostMapping("/create")
     public ResponseEntity<Lesson> createLesson(@RequestBody Lesson lesson) {
         return lessonService.createLesson(lesson);
     }
 
-    @PostMapping("/update")
+    @PutMapping("/update")
     public ResponseEntity<Lesson> updateLesson(@RequestBody Lesson lesson) {
         return lessonService.updateLesson(lesson);
     }
 
-    @PostMapping("/update-content/{id}")
+    @PutMapping("/update-content/{id}")
     public ResponseEntity<Lesson> updateContent(@RequestBody LessonContent content, @PathVariable int id) {
         return lessonService.updateLessonContent(id, content);
     }

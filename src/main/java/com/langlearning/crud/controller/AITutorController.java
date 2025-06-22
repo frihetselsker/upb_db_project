@@ -29,7 +29,7 @@ public class AITutorController {
         return aITutorService.createEntity(entity);
     }
 
-    @PostMapping("/update")
+    @PutMapping("/update")
     public ResponseEntity<AITutor> updateEntity(@RequestBody AITutor entity) {
         return aITutorService.updateEntity(entity);
     }
